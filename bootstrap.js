@@ -183,10 +183,8 @@ async function installMochaAndNyc() {
     const pkgJson = await loadPackageJson();
     pkgJson.scripts = pkgJson.scripts || {};
     pkgJson.scripts.test = "mocha";
-    pkgJson.scripts.coverage = "nyc mocha";
+    pkgJson.scripts.coverage = "nyc --reporter=lcov --reporter=text mocha";
     pkgJson.scripts = sortObjectKeys(pkgJson.scripts);
-    pkgJson.mocha = { recursive: true }
-    pkgJson.nyc = { cache: true, reporter: ["html", "lcov", "text"] };
     await savePackageJson(pkgJson);
   }
 }
