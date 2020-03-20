@@ -141,6 +141,9 @@ async function npmInit() {
     // in the project if it's not empty yet.
     pkgJson.main = "";
 
+    // npm init will default the license to ISC - prefer MIT.
+    pkgJson.license = "MIT";
+
     // unset the default test target
     if (pkgJson.scripts && pkgJson.scripts.test) {
       delete pkgJson.scripts.test;
