@@ -298,8 +298,11 @@ async function main() {
   await installEslintAndPrettier();
   await installMochaAndNyc();
   await installUnexpected();
-  await nvmInit();
   await gitInit();
+
+  if (process.argv.includes('--nvmrc')) {
+    await nvmInit();
+  }
 
   if (process.argv.includes('--touch')) {
     const preferCamelCaseForFileNames = process.argv.includes('--camel');
